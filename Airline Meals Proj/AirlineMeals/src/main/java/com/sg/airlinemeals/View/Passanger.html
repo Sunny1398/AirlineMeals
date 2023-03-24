@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+    <title>Customer Page</title>
+  </head>
+  <body>
+    <!-- Main Body of Page -->
+        <div class="container">
+        <div class="row m-4">
+            <div class="col text-center">
+                <h1>Welcome to Airline Meals</h1>
+                <p1>Here you will be able to request any adjustments to your meals for your upcoming flight</p1>
+            </div>
+        </div>
+        <div class="row m-4 ">
+            <div class="col text-center m-3">
+                <a href="Passanger.html" class="btn btn-outline-primary btn-lg">Customer Request</a>
+            </div>
+            <div class="col text-center m-3">
+                <a href="Staff.html" class="btn btn-outline-primary btn-lg">Staff Access</a>
+            </div>
+        </div>
+    </div> 
+    
+    <div class="row m-4 border border-dark">
+                <div class="col-3 text-center m-3">
+                    <span class="h3">Add Request</span>
+                </div>
+                <div class="col-7 text-center m-3">
+                    <form action="addRequest" method="POST">
+                        <div class="form-group row">
+                            <label for="flight_id" class="col-3 col-form-label">
+                                Flight ID</label>
+                            <div class="col-9">
+                                <input type="text" name="flight_id" 
+                                       id="flight_id" class="form-control"/>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="customer_name" class="col-3 col-form-label">
+                                Customer Name</label>
+                            <div class="col-9">
+                                <input type="text" name="customer_name" 
+                                       id="customer_name" class="form-control"/>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="seat_number" class="col-3 col-form-label">
+                                Seat Number</label>
+                            <div class="col-9">
+                                <input type="text" name="seat_number" 
+                                       id="seat_number" class="form-control"/>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group row"> 
+                            <label for="meal_type" class="col-3 col-form-label">Meal Type</label><br />
+  								<select name="meal_type" 
+                                       id="meal_type" class="form-control">
+    								<option value="">--Please choose a meal--</option>
+    								<option value="fl">Non-Veg</option>
+    								<option value="ind">Veg</option>
+    								<option value="ky">Vegan</option>
+  								</select>
+                        </div>
+                        
+                        <div class="form-group row"> 
+                            <label for="allergy_or_pref" class="col-3 col-form-label">
+                                Allergy/Preference</label>
+                            <div class="col-9">
+                                <input type="text" name="allergy_or_pref" 
+                                       id="allergy_or_pref" class="form-control"/>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Add Request</button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="row m-4 border border-dark">
+                <div class="col-3 text-center m-3">
+                    <span class="h3">Edit Request</span>
+                </div>
+                <div class="col-7 text-center m-3">
+                    <form action="editRequest" method="POST">
+                    	<div class="form-group row">
+                            <label for="flight_id" class="col-3 col-form-label">
+                                Request ID</label>
+                            <div class="col-9">
+                                <input type="text" name="flight_id" 
+                                       id="flight_id" class="${request.id} form-control"/>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="flight_id" class="col-3 col-form-label">
+                                Flight ID</label>
+                            <div class="col-9">
+                                <input type="text" name="flight_id" 
+                                       id="flight_id" class="${request.flight_id} form-control"/>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="customer_name" class="col-3 col-form-label">
+                                Customer Name</label>
+                            <div class="col-9">
+                                <input type="text" name="customer_name" 
+                                       id="customer_name" class="${request.customer_name} form-control"/>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="seat_number" class="col-3 col-form-label">
+                                Seat Number</label>
+                            <div class="col-9">
+                                <input type="text" name="seat_number" 
+                                       id="seat_number" class="${request.seat_number} form-control"/>
+                            </div>
+                        </div>
+                        <div class="form-group row"> 
+                            <label for="meal_type" class="col-3 col-form-label">Meal Type</label><br />
+  								<select name="meal_type" 
+                                       id="meal_type" class="${request.meal_type} form-control">
+    								<option value="">--Please choose a meal--</option>
+    								<option value="fl">Non-Veg</option>
+    								<option value="ind">Veg</option>
+    								<option value="ky">Vegan</option>
+  								</select>
+                        </div>
+                        <div class="form-group row"> 
+                            <label for="allergy_or_pref" class="col-3 col-form-label">
+                                Allergy/Preference</label>
+                            <div class="col-9">
+                                <input type="text" name="allergy_or_pref" 
+                                       id="allergy_or_pref" class="${request.allergy_or_pref} form-control"/>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Edit Request</button>
+                    </form>
+                </div>
+            </div>
+ 
+
+    </body>
+
+    <!-- End main body -->
+    
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+  </body>
+</html>; 
